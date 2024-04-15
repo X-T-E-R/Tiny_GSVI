@@ -7,6 +7,7 @@ import traceback
 from tqdm import tqdm
 sys.path.append(".")
 sys.path.append(os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(__file__))
 from . import utils
 from tools.i18n.i18n import I18nAuto
 
@@ -55,10 +56,10 @@ class TTS_Config:
     default_configs={
                 "device": "cpu",
                 "is_half": False,
-                "t2s_weights_path": "models/pretrained_models/gsv/s1bert25hz-2kh-longer-epoch=68e-step=50232.ckpt",
-                "vits_weights_path": "models/pretrained_models/gsv/s2G488k.pth",
-                "cnhuhbert_base_path": "models/pretrained_models/gsv/chinese-hubert-base",
-                "bert_base_path": "models/pretrained_models/gsv/chinese-roberta-wwm-ext-large",
+                "t2s_weights_path": "pretrained_models/s1bert25hz-2kh-longer-epoch=68e-step=50232.ckpt",
+                "vits_weights_path": "pretrained_models/s2G488k.pth",
+                "cnhuhbert_base_path": "pretrained_models/chinese-hubert-base",
+                "bert_base_path": "pretrained_models/chinese-roberta-wwm-ext-large",
                 "flash_attn_enabled": True
             }
     configs:dict = None

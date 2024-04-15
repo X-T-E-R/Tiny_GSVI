@@ -1,6 +1,6 @@
 {
   "locale": "auto",
-  "models_path": "models/gsv",
+  "models_path": "trained",
   "tts_port": 5000,
   "tts_host": "0.0.0.0",
   "half_precision": "auto",
@@ -19,7 +19,7 @@
   "备注6": "is_share代表是否分享你的前端为一个共享gradio，就可以分享链接给你的朋友了，默认为false",
   "备注7": [
     "save_cache开启会将数据缓存到磁盘上",
-    "prompt_cache每个只有约1mb，开启后每条请求能省0.3-1.5s左右，建议开",
+    "prompt_cache每个只有约0.5mb，开启后每条请求能省0.3-1.5s左右，建议开",
     "model_cache每个角色有300mb，切换人物时能省0.5s左右，自行考虑"
   ]
 }

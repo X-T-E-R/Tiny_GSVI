@@ -11,7 +11,7 @@ sys.path.append(now_dir)
 
 global state
 
-state = {   'models_path': r"models/gsv",
+state = {   'models_path': r"trained",
             'character_list': [],
             
 
@@ -34,7 +34,7 @@ config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.j
 if os.path.exists(config_path):
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
-        state["models_path"] = config.get("models_path", "models/gsv")
+        state["models_path"] = config.get("models_path", "trained")
         locale_language = str(config.get("locale", "auto"))
         locale_language = None if locale_language.lower() == "auto" else locale_language
         

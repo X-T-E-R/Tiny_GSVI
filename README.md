@@ -1,166 +1,107 @@
-# GSVI : GPT-SoVITS Inference Plugin
+---
+app_file: app.py
+colorFrom: indigo
+colorTo: blue
+emoji: "\U0001F4A1"
+license: Apache License 2.0
+pinned: false
+sdk: gradio
+sdk_version: 4.19.2
+title: GSVI Tiny 
+---
 
-Welcome to GSVI, an inference-specialized plugin built on top of GPT-SoVITS to enhance your text-to-speech (TTS) experience with a user-friendly API interface. This plugin enriches the [original GPT-SoVITS project](https://github.com/RVC-Boss/GPT-SoVITS), making voice synthesis more accessible and versatile.
+## 概述
 
-Please note that we do not recommend using GSVI for training. Its existence is to make the process of using GPT-soVITS simpler and more comfortable for others, and to make model sharing easier.
-
-This fork is mainly based on the `fast_inference_` branch, using a lot of PR code contributed by [ChasonJiang](https://github.com/ChasonJiang). Thanks to this great developer. ”Dalao NB！“
-
-At the same time, the Inference folder used by this branch is the main submodule, coming from https://github.com/X-T-E-R/TTS-for-GPT-soVITS.
-
-
-
-## Features
-
-- High-level abstract interface for easy character and emotion selection
-- Comprehensive TTS engine support (speaker selection, speed adjustment, volume control)
-- User-friendly design for everyone
-- Simply place the shared character model folder, and you can quickly use it.
-- High compatibility and extensibility for various platforms and applications (for example: SillyTavern)
-
-## Getting Started
-
-1. Install manually or use prezip for Windows
-2. Put your character model folders
-3. Run bat file or run python file manually
-4. If you encounter issues, join our community or consult the FAQ. QQ Group: 863760614 , Discord (AI Hub): 
-
-We look forward to seeing how you use GSVI to bring your creative projects to life!
-
-Prezip : https://huggingface.co/XTer123/GSVI_prezip/tree/main
-## Usage
-
-### Use With Bat Files
-
-You could see a bunch of bat files in `0 Bat Files/`
-
-- If you want to update, then run bat 0 and 1 (or 999 0 1)
-- If you want to start with a single gradio file, then run bat 3
-- If you want to start with backend and frontend , run bat 5 and 6
-- If you want to manage your models, run 10.bat
-
-### Python Files
-
-#### Start with a single gradio file
-
-- Gradio Application: `app.py`  (In the root of GSVI)
-
-#### Start with backend and frontend mod
-
-- Flask Backend Program: `Inference/src/tts_backend.py`
-- Gradio Frontend Application: `Inference/src/TTS_Webui.py`
-- Other Frontend Applications or Services Using Our API 
-
-### Model Management
-
-- Gradio Model Management Interface: `Inference/src/Character_Manager.py`
-
-##  API Documentation
-
-For API documentation, visit our [Yuque documentation page](https://www.yuque.com/xter/zibxlp/knu8p82lb5ipufqy). or [API Doc.md](./api_doc.md)
-
-## Model Folder Format
-
-In a character model folder, like `models/gsv/Character1/`
-
-Put the pth / ckpt / wav files in it, the wav should be named as the prompt text
-
-Like :
-
-```
-models/gsv
---hutao
-----hutao-e75.ckpt
-----hutao_e60_s3360.pth
-----hutao said something.wav
-```
-
-### Add a emotion for your model
-
-To make that, open the Model Manage Tool (10.bat / Inference/src/Character_Manager.py)
-
-It can assign a reference audio to each emotion, aiming to achieve the implementation of emotion options.
-
-## Installation
-
-You could install this with the guide bellow, then download pretrained models from [GPT-SoVITS Models](https://huggingface.co/lj1995/GPT-SoVITS) and place them in `models/pretrained_models/gsv`, and put your character model folder in `models/gsv`
-
-Or just download the pre-packaged distribution for Windows. ( then put your character model folder in `models/gsv` )
-
-About the character model folder, see below
-
-### Tested Environments
-
-- Python 3.9, PyTorch 2.0.1, CUDA 11
-- Python 3.10.13, PyTorch 2.1.2, CUDA 12.3
-- Python 3.9, PyTorch 2.3.0.dev20240122, macOS 14.3 (Apple silicon)
-
-_Note: numba==0.56.4 requires py<3.11_
-
-### Windows
-
-If you are a Windows user (tested with win>=10), you can directly download the [pre-packaged distribution]() and double-click on _go-webui.bat_ to start GPT-SoVITS-WebUI.
-
-Or  ```pip install -r requirements.txt``` , and then double click the `install.bat`
-
-### Linux
-
-```bash
-conda create -n GPTSoVits python=3.9
-conda activate GPTSoVits
-bash install.sh
-```
-
-### macOS
-
-**Note: The models models/gsv with GPUs on Macs result in significantly lower quality compared to those models/gsv on other devices, so we are temporarily using CPUs instead.**
-
-First make sure you have installed FFmpeg by running `brew install ffmpeg` or `conda install ffmpeg`, then install by using the following commands:
-
-```bash
-conda create -n GPTSoVits python=3.9
-conda activate GPTSoVits
-
-pip install -r requirements.txt
-git submodule init
-git submodule update --init --recursive
-```
-
-### Install FFmpeg ( No need if use prezip )
-
-#### Conda Users
-
-```bash
-conda install ffmpeg
-```
-
-#### Ubuntu/Debian Users
-
-```bash
-sudo apt install ffmpeg
-sudo apt install libsox-dev
-conda install -c conda-forge 'ffmpeg<7'
-```
-
-#### Windows Users
-
-Download and place [ffmpeg.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/ffmpeg.exe) and [ffprobe.exe](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/ffprobe.exe) in the GPT-SoVITS root.
-
-### Pretrained Models ( No need if use prezip )
-
-Download pretrained models from [GPT-SoVITS Models](https://huggingface.co/lj1995/GPT-SoVITS) and place them in `models/pretrained_models/gsv`.
+这是一个便捷的项目用于快速将您的GPT-soVITS模型上传到 modelscope 或者 Hugging Face 或任意支持gradio的空间 ，让所有人可以免费体验。
 
 
-## Docker
 
-Writing Now, Please Wait
+## 优点
 
-Remove the `pyaudio` in the `requirements.txt` !!!!
+1. 推理速度较快（核心代码使用fast_inference_分支）
+2. 引入缓存机制，切换参考音频需要时间约为0
+3. 模型以文件夹形式存在，方便分享
+4. 可以自行指定角色和情绪
 
+
+
+## 如何使用
+
+### 使用一键上传整合包
+
+到地址下载整合包（地址待修改），按照其提示运行bat即可
+
+### 手动上传到各种空间
+
+1. 将模型放到trained文件夹下
+2. 将预训练模型放到pretrained_models文件夹下
+3. 删去.gitignore的`trained` / `pretrained_models`这两行
+4. 书写`Information.md`
+5. 修改`Readme.md` （本文件）: 一般推荐只需要修改`title`和`emoji`
+6. 然后通过git工具上传到各种空间
+
+## 参数与要求
+
+### 空间要求
+
+#### Hugging Face
+
+能使用，无特别要求
+
+#### 创空间（modelscope）
+
+要求选择`ubuntu22.04-py310-torch2.1.0-tf2.14.0-modelscope1.10.0`这一个镜像版本
+
+### 调整参数
+
+在`config.json` ，您可以重点关注：
+
+    "locale": "zh_CN",
+    "max_text_length": 70,
+    "save_prompt_cache": "true",
+
+- locale代表您选择的语言，当您想使用中文时可以切换成zh_CN
+- max_text_length仅仅限制输入框的最大字数（英文按词算，中日文按字算），因为免费的空间实在是太卡了
+- save_prompt_cache代表是否保存参考音频的向量到磁盘，会显著加速，建议开启
+
+## 模型需求
+
+对于模型，整体来说，您需要把从一个到一连串的文件夹放置在`trained`文件夹内
+
+#### 1. 文件夹名称
+
+文件夹名称就是角色名称
+
+#### 2. 文件夹内容
+
+里面应该至少有3个文件，以`pth`/`ckpt`/`wav`后缀名结尾
+
+wav文件请命名成它包含的提示文本，时长在3-10s内。
+
+#### 3. json文件
+
+您可以通过模型管理界面或文本编辑器来编辑`infer_config.json`，里面的内容是参考音频配置。
+
+更多参考音频与情绪配置相关请参见[参考音频说明 (yuque.com)](https://www.yuque.com/xter/zibxlp/mkglfgl8kaal8aor)
+
+
+
+## 有关代码与引用
+
+1. 内部的 `Adapters/gsv_fast` 文件夹、`i18n`来自[GPT-soVITS](https://github.com/RVC-Boss/GPT-SoVITS)项目的`fast_inference_`分支
+
+2. app.py 主要来自原项目的一个fork [GSVI](https://github.com/X-T-E-R/GPT-SoVITS-Inference)
+
+3. 架构形式来自：[Uni-TTS-API](https://github.com/X-T-E-R/Uni-TTS-API) ，把GPT-soVITS作为一个适配器，可以更通用的使用各种语音项目
+
+
+## 请我喝奶茶
+
+打个广告，觉得我写的内容好的可以在爱发电请我一杯奶茶！ https://afdian.net/a/xter123
 
 ## Credits
 
-This fork is mainly based on the `fast_inference_` branch of [GPT-soVITS](https://github.com/RVC-Boss/GPT-SoVITS) project, using a lot of PR code contributed by [ChasonJiang](https://github.com/ChasonJiang).
+This repo is mainly based on the `fast_inference_` branch of [GPT-soVITS](https://github.com/RVC-Boss/GPT-SoVITS) project
 
 Special thanks to the following projects and contributors:
 
@@ -188,8 +129,4 @@ Special thanks to the following projects and contributors:
 - [FunASR](https://github.com/alibaba-damo-academy/FunASR)
   
 ## Thanks to all contributors for their efforts
-
-<a href="https://github.com/X-T-E-R/GPT-SoVITS-Inference/graphs/contributors" target="_blank">
-  <img src="https://contrib.rocks/image?repo=X-T-E-R/GPT-SoVITS-Inference" />
-</a>
 

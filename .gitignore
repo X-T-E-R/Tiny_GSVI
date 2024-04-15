@@ -13,6 +13,7 @@ TEMP
 PortableGit
 cache
 
-ffmpeg.exe
-ffprobe.exe
+
+trained
+pretrained_models
 
