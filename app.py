@@ -29,8 +29,8 @@ from tools.i18n.i18n import I18nAuto
 i18n = I18nAuto(locale_path="i18n/locale")
 
 import nltk
-nltk.data.path.append("nlkt_data")
-nltk.data.path.append(os.path.abspath("nlkt_data"))
+nltk.data.path.append(os.path.abspath(os.path.join(now_dir,"nltk_data")))
+
 
 language_list = ["auto", "zh", "en", "ja", "all_zh", "all_ja"]
 translated_language_list = [i18n("auto"), i18n("zh"), i18n("en"), i18n("ja"), i18n("all_zh"), i18n("all_ja")] # 由于i18n库的特性，这里需要全部手输一遍
