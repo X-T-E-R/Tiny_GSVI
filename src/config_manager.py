@@ -47,7 +47,8 @@ def load_infer_config(character_path):
     config_path = os.path.join(character_path, "infer_config.json")
     """加载环境配置文件"""
     with open(config_path, 'r', encoding='utf-8') as f:
-        config = json.load(f)
+        json_content = f.read().replace("\\", "/")
+        config = json.loads(json_content)
     return config
 
 def auto_generate_infer_config(character_path):
