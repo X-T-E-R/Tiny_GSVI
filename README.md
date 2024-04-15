@@ -3,7 +3,7 @@ app_file: app.py
 colorFrom: indigo
 colorTo: blue
 emoji: "\U0001F4A1"
-license: Apache License 2.0
+license: mit
 pinned: false
 sdk: gradio
 sdk_version: 4.19.2
@@ -14,16 +14,12 @@ title: GSVI Tiny
 
 这是一个便捷的项目用于快速将您的GPT-soVITS模型上传到 modelscope 或者 Hugging Face 或任意支持gradio的空间 ，让所有人可以免费体验。
 
-
-
 ## 优点
 
 1. 推理速度较快（核心代码使用fast_inference_分支）
 2. 引入缓存机制，切换参考音频需要时间约为0
 3. 模型以文件夹形式存在，方便分享
 4. 可以自行指定角色和情绪
-
-
 
 ## 如何使用
 
@@ -94,10 +90,18 @@ wav文件请命名成它包含的提示文本，时长在3-10s内。
 
 3. 架构形式来自：[Uni-TTS-API](https://github.com/X-T-E-R/Uni-TTS-API) ，把GPT-soVITS作为一个适配器，可以更通用的使用各种语音项目
 
+### 版权问题
+
+请仔细阅读本项目与[GPT-soVITS](https://github.com/RVC-Boss/GPT-SoVITS)项目的LICENSE，发布作品请严格标注项目作者、模型训练者、声音归属及链接，并注明作品使用GPT-SoVITS AI生成，本项目仅提供一个工具，不对任何声音数据集具有控制权或做出版权保证，如您不认可这一点，请立即停止使用！！！
+
+
+
 
 ## 请我喝奶茶
 
 打个广告，觉得我写的内容好的可以在爱发电请我一杯奶茶！ https://afdian.net/a/xter123
+
+
 
 ## Credits
 
@@ -128,5 +132,6 @@ Special thanks to the following projects and contributors:
 - [faster-whisper](https://github.com/SYSTRAN/faster-whisper)
 - [FunASR](https://github.com/alibaba-damo-academy/FunASR)
   
-## Thanks to all contributors for their efforts
+
+Thanks to all contributors for their efforts
 
