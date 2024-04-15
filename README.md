@@ -30,12 +30,25 @@ title: GSVI Tiny
 
 ### 手动上传到各种空间
 
-1. 将模型放到trained文件夹下
-2. 将预训练模型放到pretrained_models文件夹下
-3. 删去.gitignore的`trained` / `pretrained_models`这两行
-4. 书写`Information.md`
-5. 修改`Readme.md` （本文件）: 一般推荐只需要修改`title`和`emoji`
-6. 然后通过git工具上传到各种空间
+1. `git clone https://github.com/X-T-E-R/Tiny_GSVI.git`
+2. 将模型放到trained文件夹下
+3. 将预训练模型放到pretrained_models文件夹下
+4. 删去.gitignore的`trained` / `pretrained_models`这两行
+5. 书写`Information.md`
+6. 修改`Readme.md` （本文件）: 一般推荐只需要修改`title`和`emoji`
+7. 然后通过git工具上传到各种空间
+   
+上传前的git命令
+```
+git lfs install
+git add .
+git commit -m "Automated commit from batch script"
+git gc
+git lfs ls-files
+git remote add origin %url%
+git pull --strategy-option=ours origin master --allow-unrelated-histories
+git push origin master
+```
 
 ## 参数与要求
 
